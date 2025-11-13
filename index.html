@@ -3,157 +3,362 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nuevo | AI Chatbot</title>
-   <link rel="icon" href="logo.png" type="image/x-icon">
+  <title>Nuevo | Tech-Trash Tote</title>
+  <link rel="icon" href="logo.png" type="image/x-icon">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
 
     body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #0e0e0e;
-      color: white;
       margin: 0;
-      height: 100vh;
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(circle at top, #001a0f, #000);
+      color: #e0ffe0;
+      overflow-x: hidden;
+    }
+
+    /* Navigation Bar */
+    nav {
       display: flex;
-      flex-direction: column;
-      align-items: center;
       justify-content: center;
+      gap: 40px;
+      background: rgba(0, 30, 10, 0.8);
+      padding: 15px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid #00ff88;
+      box-shadow: 0 0 15px rgba(0, 255, 136, 0.2);
     }
 
-    .chat-container {
-      width: 400px;
-      background: #1a1a1a;
-      border-radius: 15px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.4);
-      overflow: hidden;
-    }
-
-    .chat-header {
-      background: #004d26;
-      color: white;
-      padding: 15px;
-      text-align: center;
+    nav a {
+      text-decoration: none;
+      color: #bdfcc9;
       font-weight: 500;
-      letter-spacing: 0.5px;
+      transition: 0.3s;
+      font-size: 1.1em;
+      text-shadow: 0 0 8px #00ff88;
     }
 
-    .chat-box {
-      padding: 20px;
-      height: 350px;
-      overflow-y: auto;
+    nav a:hover {
+      color: #00ffaa;
+      text-shadow: 0 0 15px #00ffaa;
+      transform: scale(1.05);
+    }
+
+    header {
+      text-align: center;
+      padding: 40px 20px 30px;
+      position: relative;
+    }
+
+    header img {
+      width: 130px;
+      height: auto;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    h1 {
+      font-size: 3em;
+      color: #7fff00;
+      letter-spacing: 2px;
+      text-shadow: 0 0 15px #00ff88;
+      margin-top: 10px;
+    }
+
+    p.tagline {
+      font-size: 1.3em;
+      color: #bdfcc9;
+      text-shadow: 0 0 10px #00ff88;
+      margin-top: -10px;
+    }
+
+    /* Search bar styling */
+    .search-bar {
       display: flex;
-      flex-direction: column;
-      gap: 15px;
-      scroll-behavior: smooth;
-    }
-
-    .message {
-      padding: 10px 15px;
-      border-radius: 15px;
-      max-width: 80%;
-    }
-
-    .user {
-      align-self: flex-end;
-      background: #004d26;
-      color: white;
-    }
-
-    .bot {
-      align-self: flex-start;
-      background: #333;
-      color: white;
-    }
-
-    .chat-input {
-      border-top: 1px solid #333;
-      background: #111;
-      padding: 10px;
-      display: flex;
-      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
       gap: 8px;
     }
 
-    select, button {
-      padding: 10px;
-      border-radius: 10px;
-      border: none;
-      font-size: 14px;
-      font-family: 'Poppins', sans-serif;
+    .search-bar input {
+      width: 250px;
+      padding: 10px 15px;
+      border-radius: 25px;
+      border: 1px solid #00ff88;
+      background: rgba(0, 30, 10, 0.8);
+      color: #bdfcc9;
+      outline: none;
+      font-size: 1em;
+      box-shadow: 0 0 10px rgba(0, 255, 136, 0.2);
+      transition: 0.3s;
     }
 
-    select {
-      background: #222;
-      color: white;
+    .search-bar input:focus {
+      box-shadow: 0 0 20px #00ff88;
+      border-color: #00ffaa;
     }
 
-    button {
-      background: #004d26;
-      color: white;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    button:hover {
+    .search-bar button {
       background: #00ff88;
+      color: #001a0f;
+      border: none;
+      border-radius: 25px;
+      padding: 10px 18px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 0 10px #00ff88;
+    }
+
+    .search-bar button:hover {
+      background: #00ffaa;
+      box-shadow: 0 0 20px #00ffaa;
+      transform: scale(1.05);
+    }
+
+    .ai-link {
+      display: inline-block;
+      margin-top: 25px;
+      padding: 12px 25px;
+      background: #00ff88;
+      color: #001a0f;
+      font-weight: 600;
+      border-radius: 30px;
+      text-decoration: none;
+      box-shadow: 0 0 15px #00ff88;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .ai-link:hover {
+      background: #00ffaa;
+      box-shadow: 0 0 25px #00ffaa;
+      transform: scale(1.05);
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 50px auto;
+      background: rgba(0, 30, 10, 0.8);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 25px #00ff88;
+      animation: fadeIn 2s ease;
+    }
+
+    h2 {
+      color: #7fff00;
+      text-align: center;
+      font-size: 2em;
+      margin-bottom: 20px;
+      text-shadow: 0 0 12px #00ff88;
+    }
+
+    .benefits {
+      line-height: 1.8;
+      font-size: 1.1em;
+      text-align: justify;
+    }
+
+    .benefits strong {
+      color: #adff2f;
+    }
+
+    .highlight {
+      color: #00ffcc;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #aaffaa;
+      background: rgba(0, 20, 5, 0.9);
+      border-top: 1px solid #00ff88;
+      font-size: 0.9em;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Chatbot Styles */
+    #chat-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 25px;
+      background-color: #00ff88;
+      color: black;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      font-size: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 0 15px #00ff88;
+      z-index: 999;
+      animation: pulse 2s infinite;
+    }
+
+    #chat-box {
+      position: fixed;
+      bottom: 100px;
+      right: 25px;
+      width: 300px;
+      background: rgba(0, 30, 10, 0.95);
+      border: 2px solid #00ff88;
+      border-radius: 12px;
+      box-shadow: 0 0 20px #00ff88;
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      z-index: 1000;
+    }
+
+    #chat-box.open {
+      display: flex;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    #chat-header {
+      background: #003322;
+      color: #7fff00;
+      text-align: center;
+      padding: 10px;
+      font-weight: bold;
+    }
+
+    #chat-messages {
+      flex-grow: 1;
+      padding: 10px;
+      overflow-y: auto;
+      max-height: 250px;
+    }
+
+    #chat-input-area {
+      display: flex;
+      border-top: 1px solid #00ff88;
+    }
+
+    #chat-input {
+      flex: 1;
+      padding: 8px;
+      border: none;
+      background: #001a0f;
+      color: #bdfcc9;
+      outline: none;
+    }
+
+    #send-btn {
+      background: #00ff88;
+      border: none;
+      padding: 8px 12px;
+      cursor: pointer;
+      color: black;
+      font-weight: bold;
+    }
+
+    .user, .bot {
+      margin: 5px 0;
+      padding: 8px 12px;
+      border-radius: 10px;
+      max-width: 85%;
+      word-wrap: break-word;
+    }
+
+    .user {
+      background-color: #004d26;
+      align-self: flex-end;
+    }
+
+    .bot {
+      background-color: #003322;
+      border: 1px solid #00ff88;
+    }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 15px #00ff88; }
+      50% { box-shadow: 0 0 30px #00ffaa; }
     }
   </style>
+
+
+
 </head>
 <body>
-  <div class="chat-container">
-    <div class="chat-header">NUEVO AI Assistant</div>
-    <div class="chat-box" id="chatBox">
-      <div class="message bot">Hello! 👋 I'm NUEVO’s AI assistant. Select a question below to know more about our tote bags.</div>
-    </div>
-    <div class="chat-input">
-      <select id="questionSelect">
-        <option value="" disabled selected>Select your question...</option>
-        <option value="details">Give some details about the tote bag?</option>
-        <option value="purchase">Why should I purchase the tote bag?</option>
-        <option value="eco">How are the tote bags eco-friendly?</option>
-        <option value="colors">What are the color options for the tote bag?</option>
-      </select>
-      <button onclick="sendMessage()">Ask</button>
+
+  <!-- 🌿 Navigation Bar -->
+  <nav>
+    <a href="https://davpssahibabad.github.io/nuevo/">Home</a>
+    <a href="https://davpssahibabad.github.io/store/">Store</a>
+    <a href="https://davpssahibabad.github.io/revabot/">Reva (AI Assistant)</a>
+     <a href="https://davpssahibabad.github.io/login/">Login</a>
+  <a href="https://davpssahibabad.github.io/signup/">Signup</a>
+  </nav>
+
+  <header>
+    <img src="logo.png" alt="Nuevo Logo">
+    <h1>Nuevo</h1>
+    <p class="tagline">Carry the Future — Made from the Past</p>
+
+    <!-- 🔍 Search Bar -->
+    <form class="search-bar" action="/search" method="get">
+      <input type="text" name="q" placeholder="Search products, ideas..." required>
+      <button type="submit">Search</button>
+    </form>
+
+    <a href="https://davpssahibabad.github.io/revabot/" id="ai-link" class="ai-link">🤖 Meet our AI Chatbot: Reva</a>
+  </header>
+
+  <div class="container">
+    <h2>Tech-Trash Tote: The Future of Sustainable Fashion</h2>
+    <div class="benefits">
+      <p>
+        The <strong>Tech-Trash Tote</strong> is not just a bag — it's a symbol of transformation. 
+        Created from old <span class="highlight">denim fabrics, charging cables, CDs, and discarded circuit parts</span>, 
+        it represents how yesterday’s waste can become tomorrow’s wonder.
+      </p>
+
+      <p>
+        Every material in this tote has been <strong>upcycled</strong> — reducing landfill waste and giving 
+        new life to electronic components that would otherwise harm the environment. 
+        The process consumes <strong>zero plastic</strong> and <strong>minimal energy</strong>, 
+        aligning perfectly with the principles of <span class="highlight">sustainable innovation</span>.
+      </p>
+
+      <p>
+        The design blends <strong>technology and craftsmanship</strong>. The braided wire handles and 
+        recycled keyboard keys highlight human creativity in repurposing what was once “trash” 
+        into something practical, stylish, and durable.
+      </p>
+
+      <p>
+        By choosing the Tech-Trash Tote, consumers actively contribute to a <span class="highlight">circular economy</span> — 
+        reducing electronic waste, promoting recycling habits, and proving that fashion can coexist with 
+        environmental responsibility.
+      </p>
+
+      <p style="text-align:center; font-size:1.2em; margin-top:25px; color:#adff2f;">
+        🌍 “Every carry makes a difference — because the future deserves a cleaner past.” 🌱
+      </p>
     </div>
   </div>
 
-  <script>
-    const chatBox = document.getElementById("chatBox");
-    const select = document.getElementById("questionSelect");
+  <section id="chat-section"></section>
 
-    function sendMessage() {
-      const value = select.value;
-      if (!value) return;
+  <footer>
+    © 2025 Nuevo | Tech-Trash Co. | Designed for a Greener Tomorrow
+  </footer>
 
-      // User message
-      const userMessage = document.createElement("div");
-      userMessage.classList.add("message", "user");
-      userMessage.textContent = select.options[select.selectedIndex].text;
-      chatBox.appendChild(userMessage);
-
-      // Bot response
-      const botMessage = document.createElement("div");
-      botMessage.classList.add("message", "bot");
-      botMessage.textContent = getBotResponse(value);
-      chatBox.appendChild(botMessage);
-
-      chatBox.scrollTop = chatBox.scrollHeight; // auto scroll
-    }
-
-    function getBotResponse(value) {
-      switch(value) {
-        case "details":
-          return "Our tote bag is an upcycled masterpiece — handcrafted from fabric scraps, old belts, and recycled metal bits. It blends durability, contemporary design, and everyday functionality.";
-        case "purchase":
-          return "You should purchase this tote because it embodies conscious fashion — a durable, stylish, and sustainable companion made from reclaimed materials, perfect for modern lifestyles.";
-        case "eco":
-          return "Each tote bag is eco-friendly as it's crafted using discarded fabrics, denim, and jute, minimizing textile waste and reducing landfill impact through creative upcycling.";
-        case "colors":
-          return "Our collection features: Eco Blue Tote, Circuit Green Tote, Denim Grey Tote, Solar Orange Tote, and a vibrant Multi-Color Tote — each made from unique recycled materials.";
-        default:
-          return "Sorry, I can only answer the given questions!";
-      }
-    }
-  </script>
+  <script src="{{ url_for('static', filename='bot.js') }}"></script>
 </body>
 </html>
